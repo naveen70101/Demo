@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
     initializeContactForm();
     initializeSmoothScrolling();
+    initializeHomeButtons();
 });
 
 // Navigation Functions
@@ -412,3 +413,23 @@ function cleanup3DScene() {
 
 // Cleanup on page unload
 window.addEventListener('beforeunload', cleanup3DScene);
+
+// Home Button Navigation
+function initializeHomeButtons() {
+    const viewWorkBtn = document.getElementById('view-work-btn');
+    const getInTouchBtn = document.getElementById('get-in-touch-btn');
+    
+    if (viewWorkBtn) {
+        viewWorkBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.hash = '#projects';
+        });
+    }
+    
+    if (getInTouchBtn) {
+        getInTouchBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.hash = '#contact';
+        });
+    }
+}
