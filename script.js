@@ -7,6 +7,8 @@ const homeText = document.querySelector('.home-text');
 const sceneContainer = document.querySelector('.scene-container');
 const photoFrameDesktop = document.querySelector('.photo-frame-desktop');
 const contactForm = document.getElementById('contactForm');
+const viewWorkBtn = document.getElementById('view-work-btn');
+const getInTouchBtn = document.getElementById('get-in-touch-btn');
 
 // Navigation State
 let currentPage = 'home';
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
     initializeContactForm();
     initializeSmoothScrolling();
+    initializeHomeButtons();
 });
 
 // Navigation Functions
@@ -399,6 +402,33 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Home Page Button Functions
+function initializeHomeButtons() {
+    // View My Work button - navigate to projects
+    if (viewWorkBtn) {
+        viewWorkBtn.addEventListener('click', () => {
+            navigateToPage('projects');
+        });
+    }
+    
+    // Get in Touch button - navigate to contact
+    if (getInTouchBtn) {
+        getInTouchBtn.addEventListener('click', () => {
+            navigateToPage('contact');
+        });
+    }
+}
+
+function navigateToPage(page) {
+    // Update URL
+    window.location.hash = `#${page}`;
+    
+    // Close mobile menu if open
+    if (isMobileMenuOpen) {
+        toggleMobileMenu();
+    }
+}
 
 // Cleanup function for 3D scene
 function cleanup3DScene() {
